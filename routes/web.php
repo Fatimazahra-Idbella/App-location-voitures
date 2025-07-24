@@ -89,3 +89,17 @@ Route::fallback(function(){
 });
 
 Route::get('/vehicles/dashboard', [VoitureController::class, 'indexdashboard'])->name('vehicles.dashboard');
+
+Route::get('/redirect-by-role', function () {
+    $user = Auth::user();
+
+    if ($user->role === 'admin') {
+        return redirect('/vehicles/dashboard'); // ou route('admin.dashboard')
+    } elseif ($user->role === 'client') {
+        return redirect('/home'); // ou route('user.dashboard')
+    } else {
+        return redirect('/welcome'); // ou page d’accueil par défaut
+    }
+})->middleware(['auth']);
+
+

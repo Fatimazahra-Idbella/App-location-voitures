@@ -76,6 +76,8 @@ class AdminController extends Controller
             'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['required', 'in:admin,client'],
+
         ]);
 
         $user = new user();
@@ -85,6 +87,9 @@ class AdminController extends Controller
         $user->username = $request->username;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
+        $user->role = $request->role;
+
+        
 
         $user->save();
 
@@ -119,6 +124,7 @@ class AdminController extends Controller
             'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['required', 'in:admin,client'],
         ]);
 
         $user = user::find($request->id);
@@ -128,12 +134,14 @@ class AdminController extends Controller
             $user->prenom = $request->prenom;
             $user->username = $request->username;
             $user->password = bcrypt($request->password);
+            $user->role = $request->role;
         } else {
             $user->name = $request->name;
             $user->prenom = $request->prenom;
             $user->username = $request->username;
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
+            $user->role = $request->role;
         }
         
 
