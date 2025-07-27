@@ -114,79 +114,40 @@ class VoitureController extends Controller
     public function create()
     {
         //
+        return view('users.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'marquecar' => ['required', 'string', 'max:255'],
-            'modelcar' => ['required', 'string', 'max:255'],
-            'matriculeG' => ['required', 'string', 'max:255'],
-            'MatriculeL' => ['required', 'string', 'max:255',],
-            'matriculeS' => [ 'string', 'max:255'],
-            'assurancecar' => ['string', 'max:255'],
-            'visitetechnique' => ['string', 'max:255'],
-            'Compteurcar' => ['string', 'max:255'],
-            'd_Compteurcar' => ['string', 'max:255'],
-        ]);
 
-        $car = new Voiture();
-        $car->marque = $request->marquecar;
-        $car->model = $request->modelcar;
-        $car->matriculG = $request->matriculeG;
-        $car->matriculL = $request->MatriculeL;
-        $car->matriculS = $request->matriculeS;
-        $car->compteur = $request->Compteurcar;
-        $car->d_compteur = $request->d_Compteurcar;
-        $car->save();
+   */
+public function store(Request $request)
+{
+    $request->validate([
+        'brand' => 'required|string|max:255',
+        'model' => 'required|string|max:255',
+        'plateG' => 'required|string|max:255',
+        'plateL' => 'required|string|max:255',
+        'plateS' => 'required|string|max:255',
+        'mileage' => 'required|numeric',
+        'mileage_date' => 'required|date',
+    ]);
+
+    \App\Models\Voiture::create([
+        'marque' => $request->brand,
+        'model' => $request->model,
+        'matriculG' => $request->plateG,
+        'matriculL' => $request->plateL,
+        'matriculS' => $request->plateS,
+        'compteur' => $request->mileage,
+        'd_compteur' => $request->mileage_date,
+    ]);
+
+   return redirect()->route('users.vehicles')->with('success', 'Vehicle added successfully.');
 
 
-        $car2 = new repair();
-        $car2->videnge = 0;
-        $car2->d_videnge = date('Y-m-d H:i:s');
-        $car2->plaquette = 0;
-        $car2->croix_chaine = 0;
-        $car2->isfilteroil = 0;
-        $car2->isfilterair = 0;
-        $car2->isfiltergasoil = 0;
-        $car2->autre_repair = 0;
-        $car2->car_id = $car->id;
-        $car2->save();
-        
-        $intrvl = new intervalle();
-        $intrvl->intervalle_videnge = 10000;
-        $intrvl->intervalle_plaquette = 90;
-        $intrvl->intervalle_croix = 50000;
-        $intrvl->intervalle_assurance = $request->inter_assurance;
-        $intrvl->intervalle_visit = $request->inter_visite;
-        $intrvl->intervalle_circulation = $request->inter_cercu;
-        $intrvl->intervalle_id = $car->id;
-        $intrvl->save();
+}
 
-        $assurances = new assurance();
-        $assurances->assurance = $request->assurancecar;
-        $assurances->assurance_id = $car->id;
-        $assurances->save();
-
-        $visites = new visite();
-        $visites->visite = $request->visitetechnique;
-        $visites->visite_id = $car->id;
-        $visites->save();
-
-        $circulations = new circulation();
-        if ($request->auto_cercu == '') {
-            $circulations->circulation = '1000-01-01';
-        } else {
-            $circulations->circulation = $request->auto_cercu;
-        }
-        $circulations->circulation_id = $car->id;
-        $circulations->save();
-
-        return redirect()->back()->with('success','New user has been added successfully');
-    }
 
     /**
      * Display the specified resource.

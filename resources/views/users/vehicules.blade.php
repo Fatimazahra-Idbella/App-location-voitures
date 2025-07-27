@@ -471,10 +471,11 @@
                             </div>
                             Vehicle Fleet Management
                         </h6>
-                        <button class="add-vehicle-btn" onclick="addNewVehicle()">
-                            <i class="material-icons me-2">add</i>
-                            Add Vehicle
-                        </button>
+                      <a href="{{ route('users.create') }}" class="add-vehicle-btn">
+    <i class="material-icons me-2">add</i>
+    Add Vehicle
+</a>
+
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
@@ -486,8 +487,7 @@
                                     <th>License Plate</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center">Registration Date</th>
-                                    <th class="text-center">Insurance</th>
-                                    <th class="text-center">Technical Inspection</th>
+                                   
                                     <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
@@ -516,12 +516,7 @@
                                     <td class="align-middle text-center">
                                         <span class="text-secondary text-sm font-weight-bold">15/03/2023</span>
                                     </td>
-                                    <td class="align-middle text-center">
-                                        <span class="text-secondary text-sm font-weight-bold">Valid until 2024</span>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <span class="text-secondary text-sm font-weight-bold">Valid until 2024</span>
-                                    </td>
+                                   
                                     <td class="align-middle text-center">
                                         <button class="action-btn me-2" title="Edit">
                                             <i class="material-icons text-sm">edit</i>
@@ -555,12 +550,7 @@
                                     <td class="align-middle text-center">
                                         <span class="text-secondary text-sm font-weight-bold">22/01/2023</span>
                                     </td>
-                                    <td class="align-middle text-center">
-                                        <span class="text-secondary text-sm font-weight-bold">Valid until 2024</span>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <span class="text-secondary text-sm font-weight-bold">Valid until 2024</span>
-                                    </td>
+                                    
                                     <td class="align-middle text-center">
                                         <button class="action-btn me-2" title="Edit">
                                             <i class="material-icons text-sm">edit</i>
@@ -594,12 +584,7 @@
                                     <td class="align-middle text-center">
                                         <span class="text-secondary text-sm font-weight-bold">08/02/2023</span>
                                     </td>
-                                    <td class="align-middle text-center">
-                                        <span class="text-secondary text-sm font-weight-bold">Valid until 2024</span>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <span class="text-secondary text-sm font-weight-bold">Expired</span>
-                                    </td>
+                                   
                                     <td class="align-middle text-center">
                                         <button class="action-btn me-2" title="Edit">
                                             <i class="material-icons text-sm">edit</i>
@@ -633,12 +618,7 @@
                                     <td class="align-middle text-center">
                                         <span class="text-secondary text-sm font-weight-bold">12/04/2023</span>
                                     </td>
-                                    <td class="align-middle text-center">
-                                        <span class="text-secondary text-sm font-weight-bold">Valid until 2024</span>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <span class="text-secondary text-sm font-weight-bold">Valid until 2024</span>
-                                    </td>
+                                    
                                     <td class="align-middle text-center">
                                         <button class="action-btn me-2" title="Edit">
                                             <i class="material-icons text-sm">edit</i>
@@ -672,12 +652,7 @@
                                     <td class="align-middle text-center">
                                         <span class="text-secondary text-sm font-weight-bold">28/02/2023</span>
                                     </td>
-                                    <td class="align-middle text-center">
-                                        <span class="text-secondary text-sm font-weight-bold">Valid until 2024</span>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <span class="text-secondary text-sm font-weight-bold">Valid until 2024</span>
-                                    </td>
+                                    
                                     <td class="align-middle text-center">
                                         <button class="action-btn me-2" title="Edit">
                                             <i class="material-icons text-sm">edit</i>
@@ -714,30 +689,7 @@
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-sm font-weight-bold">23/04/18</span>
                                         </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-sm font-weight-bold">
-                                                @if(isset($assurances))
-                                                    @foreach ($assurances as $assurance)
-                                                        @if ($assurance->papier_id == $car->id)
-                                                            {{$assurance->assurance}}
-                                                            @break
-                                                        @endif
-                                                    @endforeach
-                                                @endif
-                                            </span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-sm font-weight-bold">
-                                                @if(isset($visites))
-                                                    @foreach ($visites as $visite)
-                                                        @if ($visite->papier_id == $car->id)
-                                                            {{$visite->visite}}
-                                                            @break
-                                                        @endif
-                                                    @endforeach
-                                                @endif
-                                            </span>
-                                        </td>
+                                       
                                         <td class="align-middle text-center">
                                             <button class="action-btn me-2" title="Edit">
                                                 <i class="material-icons text-sm">edit</i>

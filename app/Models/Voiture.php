@@ -9,16 +9,16 @@ class Voiture extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'marque',
-        'model',
-        'matriculG',
-        'matriculL',
-        'matriculS',
-        'assurance',
-        'visite',
-        'compteur',
-        'd_compteur',
-    ];
+  protected $fillable = [
+    'marque',
+    'model',
+    'matriculG',
+    'matriculL',
+    'matriculS',
+    'compteur',
+    'd_compteur',
+];
+
+
 
 }

@@ -103,3 +103,14 @@ Route::get('/redirect-by-role', function () {
 })->middleware(['auth']);
 
 
+// Afficher le formulaire
+Route::get('/user/create', [VoitureController::class, 'create'])->name('users.create');
+
+// Enregistrer le véhicule
+Route::post('/user/store', [VoitureController::class, 'store'])->name('users.store');
+
+Route::get('/user/vehicles', [VoitureController::class, 'index'])->name('users.vehicles');
+
+
+
+
