@@ -691,13 +691,22 @@
                                         </td>
                                        
                                         <td class="align-middle text-center">
-                                            <button class="action-btn me-2" title="Edit">
-                                                <i class="material-icons text-sm">edit</i>
-                                            </button>
-                                            <button class="action-btn" title="Delete">
-                                                <i class="material-icons text-sm">delete</i>
-                                            </button>
-                                        </td>
+    <a href="{{ route('users.edit', $car->id) }}" class="action-btn me-2" title="Edit">
+    <i class="material-icons text-sm">edit</i>
+</a>
+
+
+   <form action="{{ route('users.destroy', $car->id) }}" method="POST" style="display:inline-block;">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="action-btn" onclick="return confirm('Are you sure?')" title="Delete">
+        <i class="material-icons text-sm">delete</i>
+    </button>
+</form>
+
+
+</td>
+
                                     </tr>
                                     @endforeach
                                 @endif
@@ -730,7 +739,7 @@
                                     <th>Revenue</th>
                                     <th>Status</th>
                                     <th class="text-center">Performance</th>
-                                    <th class="text-center">Actions</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -761,11 +770,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="align-middle text-center">
-                                        <button class="action-btn">
-                                            <i class="material-icons text-sm">visibility</i>
-                                        </button>
-                                    </td>
+                                    
                                 </tr>
 
                                 <tr>
@@ -795,11 +800,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="align-middle text-center">
-                                        <button class="action-btn">
-                                            <i class="material-icons text-sm">visibility</i>
-                                        </button>
-                                    </td>
+                                    
                                 </tr>
 
                                 <tr>
@@ -829,11 +830,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="align-middle text-center">
-                                        <button class="action-btn">
-                                            <i class="material-icons text-sm">visibility</i>
-                                        </button>
-                                    </td>
+                                    
                                 </tr>
 
                                 <tr>
@@ -863,11 +860,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="align-middle text-center">
-                                        <button class="action-btn">
-                                            <i class="material-icons text-sm">visibility</i>
-                                        </button>
-                                    </td>
+                                   
                                 </tr>
 
                                 <tr>
@@ -897,11 +890,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="align-middle text-center">
-                                        <button class="action-btn">
-                                            <i class="material-icons text-sm">visibility</i>
-                                        </button>
-                                    </td>
+                                   
                                 </tr>
 
                                 <!-- Dynamic content from database -->
@@ -933,11 +922,7 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="align-middle text-center">
-                                            <button class="action-btn">
-                                                <i class="material-icons text-sm">visibility</i>
-                                            </button>
-                                        </td>
+                                        
                                     </tr>
                                     @endforeach
                                 @endif

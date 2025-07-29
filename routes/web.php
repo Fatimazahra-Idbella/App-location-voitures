@@ -111,6 +111,13 @@ Route::post('/user/store', [VoitureController::class, 'store'])->name('users.sto
 
 Route::get('/user/vehicles', [VoitureController::class, 'index'])->name('users.vehicles');
 
+// Afficher formulaire de modification et supprision
+// web.php
+Route::get('/user/{id}/edit', [VoitureController::class, 'edit'])->name('users.edit');
+Route::put('/user/{id}', [VoitureController::class, 'update'])->name('users.update');
+Route::delete('/user/{id}', [VoitureController::class, 'destroy'])->name('users.destroy');
+Route::get('/user/vehicles', [VoitureController::class, 'index'])->name('users.vehicles');
+
 
 
 

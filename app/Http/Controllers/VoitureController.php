@@ -168,15 +168,17 @@ public function store(Request $request)
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+   public function edit($id)
+{
+    $car = Voiture::findOrFail($id);
+    return view('users.edit', compact('car'));
+}
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+   /* public function update(Request $request, $id)
     {
         $request->validate([
             'marquecar' => ['required', 'string', 'max:255'],
@@ -219,20 +221,25 @@ public function store(Request $request)
         $intrvl->save();
 
         return redirect()->back()->with('info','The user has been modified successfully');
-    }
-    public function updatecar(Request $request)
-    {
-        //
-    }
+    }*/
+    public function update(Request $request, $id)
+{
+    $car = Voiture::findOrFail($id);
+    $car->update($request->all());
+    return redirect()->route('users.vehicles')->with('success', 'Vehicle updated successfully.');
+}
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
-    {
-        Voiture::destroy($id);
-        return redirect()->back()->with('warning','The user has been successfully deleted');
-    }
+  public function destroy($id)
+{
+    $car = Voiture::findOrFail($id);
+    $car->delete();
+    return redirect()->route('users.vehicles')->with('success', 'Vehicle deleted successfully.');
+}
+
+
     
     public function storeincar(Request $request)
     {
