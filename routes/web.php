@@ -115,9 +115,8 @@ Route::get('/user/vehicles', [VoitureController::class, 'index'])->name('users.v
 // web.php
 Route::get('/user/{id}/edit', [VoitureController::class, 'edit'])->name('users.edit');
 Route::put('/user/{id}', [VoitureController::class, 'update'])->name('users.update');
-Route::delete('/user/{id}', [VoitureController::class, 'destroy'])->name('users.destroy');
+Route::delete('/user/{id}/destroy', [VoitureController::class, 'destroy'])->name('users.destroy');
 Route::get('/user/vehicles', [VoitureController::class, 'index'])->name('users.vehicles');
-
 
 
 

@@ -43,10 +43,7 @@ class UserController extends Controller
     {
         return view('users.notifications');
     }
-    public function profile()
-    {
-        return view('users.profile');
-    }
+    
 
 // insert data in data base
 
@@ -104,4 +101,12 @@ class UserController extends Controller
     {
         //
     }
+
+    public function profile()
+{
+    return view('users.profile');
+}
+
+
+
 }

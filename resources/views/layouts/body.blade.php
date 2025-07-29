@@ -281,9 +281,9 @@
               © <script>
                 document.write(new Date().getFullYear())
               </script>,
-              made with <i class="fa fa-heart"></i> by
-              <a href="https://www.facebook.com/hichame.amouri/" class="font-weight-bold" target="_blank">Aamouri Hichame</a>
-              for a better web.
+              Dev <i class="fa fa-heart"></i> by
+              <a href="https://www.linkedin.com/in/fatima-ezzahra-idbella" class="font-weight-bold" target="_blank">Fatima Ezzahra IDBELLA</a>
+
             </div>
           </div>
           <div class="col-lg-6">
