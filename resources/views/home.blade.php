@@ -815,50 +815,52 @@
             </div>
         </a>
 
-        <!-- Dacia Stepway 2 -->
+        <!-- Peugeot -->
         <a class="car-card" href="#">
-            <div class="car-image-container">
-                <div class="car-image" style="background-image: url('../assets/img/cars/DACIA-Sandero-Stepway2.jpg');"></div>
-                <div class="availability-badge available">Available</div>
-                <div class="booking-overlay">
-                    <div class="booking-btn">
-                        <i class="material-icons" style="font-size: 1rem;">event_available</i>
-                        Reserve Now
-                    </div>
-                </div>
-            </div>
-            <div class="car-details">
-                <h4 class="car-name">Dacia Stepway</h4>
-                <div class="car-year">2022 Model</div>
-                <div class="car-specs">
-                    <div class="spec-item">
-                        <i class="material-icons spec-icon">airline_seat_recline_normal</i>
-                        <span><span class="spec-value">5</span> Passengers</span>
-                    </div>
-                    <div class="spec-item">
-                        <i class="material-icons spec-icon">settings</i>
-                        <span><span class="spec-value">Manual</span></span>
-                    </div>
-                    <div class="spec-item">
-                        <i class="material-icons spec-icon">ac_unit</i>
-                        <span><span class="spec-value">Air Conditioning</span></span>
-                    </div>
-                    <div class="spec-item">
-                        <i class="material-icons spec-icon">terrain</i>
-                        <span><span class="spec-value">Compact</span> SUV</span>
-                    </div>
-                </div>
-            </div>
-            <div class="car-footer">
-                <div class="car-price">
-                    $60 <span class="price-period">/ day</span>
-                </div>
-                <div class="car-status">
-                    <i class="material-icons" style="font-size: 1rem; color: #059669;">check_circle</i>
-                    Available
-                </div>
-            </div>
-        </a>
+  <div class="car-image-container">
+    <div class="car-image" style="background-image: url('../assets/img/cars/peugeot-208-2019.jpg');"></div>
+    <div class="availability-badge available">Available</div>
+    <div class="booking-overlay">
+      <div class="booking-btn">
+        <i class="material-icons" style="font-size: 1rem;">event_available</i>
+        Reserve Now
+      </div>
+    </div>
+  </div>
+  <div class="car-details">
+    <h4 class="car-name">Peugeot</h4>
+    <div class="car-year">2019 Model</div>
+    <div class="car-specs">
+      <div class="spec-item">
+        <i class="material-icons spec-icon">airline_seat_recline_normal</i>
+        <span><span class="spec-value">5</span> Passengers</span>
+      </div>
+      <div class="spec-item">
+        <i class="material-icons spec-icon">settings</i>
+        <span><span class="spec-value">1.2L PureTech</span> Manual</span>
+      </div>
+      <div class="spec-item">
+        <i class="material-icons spec-icon">ac_unit</i>
+        <span><span class="spec-value">Air Conditioning</span></span>
+      </div>
+      <div class="spec-item">
+        <i class="material-icons spec-icon">local_gas_station</i>
+        <span><span class="spec-value">Fuel Efficient</span> ~4.5 L/100km</span>
+      </div>
+    </div>
+  </div>
+  <div class="car-footer">
+    <div class="car-price">
+      $55 <span class="price-period">/ day</span>
+    </div>
+    <div class="car-status">
+      <i class="material-icons" style="font-size: 1rem; color: #059669;">check_circle</i>
+      Available
+    </div>
+  </div>
+</a>
+
+            
 
         <!-- Renault Clio -->
         <a class="car-card" href="#">
