@@ -93,12 +93,10 @@ Route::get('/vehicles/dashboard', [VoitureController::class, 'indexdashboard'])-
 Route::get('/redirect-by-role', function () {
     $user = Auth::user();
 
-    if ($user->role === 'admin') {
-        return redirect('/vehicles/dashboard'); // ou route('admin.dashboard')
-    } elseif ($user->role === 'client') {
-        return redirect('/home'); // ou route('user.dashboard')
+    if ($user->isAdmin) {
+        return redirect('/admin/dashboard'); // ou '/admin/vehicles'
     } else {
-        return redirect('/welcome'); // ou page d’accueil par défaut
+        return redirect('/users/dashboard');
     }
 })->middleware(['auth']);
 
@@ -117,6 +115,5 @@ Route::get('/user/{id}/edit', [VoitureController::class, 'edit'])->name('users.e
 Route::put('/user/{id}', [VoitureController::class, 'update'])->name('users.update');
 Route::delete('/user/{id}/destroy', [VoitureController::class, 'destroy'])->name('users.destroy');
 Route::get('/user/vehicles', [VoitureController::class, 'index'])->name('users.vehicles');
-
 
 

@@ -26,4 +26,21 @@ class HomeController extends Controller
         
         return view('home');
     }
+
+    public function login(Request $request)
+{
+    $credentials = $request->only('email', 'password');
+
+    if (Auth::attempt($credentials)) {
+        $user = Auth::user();
+
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.dashboard'); // par exemple vers AdminController@index
+        } else {
+            return redirect()->route('users.dashboard'); // par exemple vers UserController@index
+        }
+    }
+
+    return back()->withErrors(['email' => 'Invalid credentials.']);
+}
 }
