@@ -111,14 +111,14 @@
                   document.write(new Date().getFullYear())
                 </script>,
                 made with <i class="fa fa-heart" aria-hidden="true"></i> by
-                <a href="https://www.facebook.com/hichame.amouri/" class="font-weight-bold text-white" target="_blank">Aamouri Hichame</a>
+                <a href="https://www.facebook.com/hichame.amouri/" class="font-weight-bold text-white" target="_blank">Fatima Ezzahra IDBELLA</a>
                 for a better web.
               </div>
             </div>
             <div class="col-12 col-md-6">
               <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                 <li class="nav-item">
-                  <a href="#" class="nav-link text-white" target="_blank">Hichame Aamouri</a>
+                  <a href="#" class="nav-link text-white" target="_blank">Fatima Ezzahra IDBELLA</a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link text-white" target="_blank">About Us</a>

@@ -93,12 +93,22 @@ Route::get('/vehicles/dashboard', [VoitureController::class, 'indexdashboard'])-
 Route::get('/redirect-by-role', function () {
     $user = Auth::user();
 
-    if ($user->isAdmin) {
-        return redirect('/admin/dashboard'); // ou '/admin/vehicles'
-    } else {
-        return redirect('/users/dashboard');
+    if ($user->role === 'admin' || $user->isAdmin == 1) {
+        return redirect('/admin/dashboard');
     }
-})->middleware(['auth']);
+
+    return redirect('/user/dashboard');
+});
+// Dashboard admin
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])
+    ->name('admin.dashboard')
+    ->middleware(['auth', 'isAdmin']);
+
+
+// Dashboard user
+Route::get('/users/dashboard', [App\Http\Controllers\UserController::class, 'dashboard'])
+    ->name('users.dashboard')
+    ->middleware('auth');
 
 
 // Afficher le formulaire
@@ -116,4 +126,8 @@ Route::put('/user/{id}', [VoitureController::class, 'update'])->name('users.upda
 Route::delete('/user/{id}/destroy', [VoitureController::class, 'destroy'])->name('users.destroy');
 Route::get('/user/vehicles', [VoitureController::class, 'index'])->name('users.vehicles');
 
+Route::middleware(['auth', 'IsAdmin'])->group(function () {
+    Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin.dashboard');
+});
 
+Route::get('/vehicles', [VehicleController::class, 'index'])->name('admin.vehicles');
