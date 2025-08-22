@@ -33,10 +33,15 @@
                         <div>
                             @php
                             
-                                $durervidenge = $car->intervalle_videnge;
-                                $contvidenge = $car->videnge - $car->compteur + $durervidenge;
-                                $contperce =$durervidenge/100;
-                                $percevidenge = $contvidenge/$contperce;
+                                $durervidenge = $car->intervalle_videnge ?? 0; // sécuriser si null
+$contvidenge = $car->videnge - $car->compteur + $durervidenge;
+
+if ($durervidenge > 0) {
+    $contperce = $durervidenge / 100;
+    $percevidenge = $contvidenge / $contperce;
+} else {
+    $percevidenge = 0; // éviter la division par zéro
+}
                                 
                             @endphp
                             <span class="me-2 text-md font-weight-bold mb-0" style="
@@ -98,12 +103,17 @@
                             </div>
                             <div>
                                 @php
-                                    $oldDate = Carbon::parse($plaquette_d_videnge);
-                                    $currentDate = Carbon::now();
-                                    $durerPlaquette = $car->intervalle_plaquette;
-                                    $difference = ($oldDate->diffInDays($currentDate) - $durerPlaquette)*-1;
-                                    $contpercepl =$durerPlaquette/100;
-                                    $perceplaquette = $difference/$contpercepl;
+                                   $oldDate = Carbon::parse($plaquette_d_videnge);
+$currentDate = Carbon::now();
+$durerPlaquette = $car->intervalle_plaquette ?? 0; // sécuriser si null
+$difference = ($oldDate->diffInDays($currentDate) - $durerPlaquette) * -1;
+
+if ($durerPlaquette > 0) {
+    $contpercepl = $durerPlaquette / 100;
+    $perceplaquette = $difference / $contpercepl;
+} else {
+    $perceplaquette = 0; // éviter la division par zéro
+}
                                 @endphp
                                 <div class="progress mx-auto">
                                 <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{$perceplaquette}}%;"></div>
@@ -136,11 +146,17 @@
                         <div class="flex-column align-items-center justify-content-center">
                         <div>
                             @php
-                                $durerCroit =$car->intervalle_croix;;
-                                $contCroit = 0 - $car->compteur + $durerCroit;
-                                $contpercecr =$durerCroit/100;
-                                $perceCroit =$contCroit/$contpercecr;
-                                $croixChaine_croix_chaine=0;
+                                $durerCroit = $car->intervalle_croix ?? 0; // sécuriser si null
+$contCroit = 0 - $car->compteur + $durerCroit;
+
+if ($durerCroit > 0) {
+    $contpercecr = $durerCroit / 100;
+    $perceCroit = $contCroit / $contpercecr;
+} else {
+    $perceCroit = 0; // éviter la division par zéro
+}
+
+$croixChaine_croix_chaine = 0;
                             @endphp
                             @foreach ($croixChaines as $croixChaine)
                                 @if ($croixChaine->car_id == $car->id)

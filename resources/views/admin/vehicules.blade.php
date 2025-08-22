@@ -1,3 +1,4 @@
+
 @php
     use Carbon\Carbon;
     $carassurance='1000-01-01';
@@ -53,14 +54,19 @@
             </div>
             <div>
                 @php
-                    $intervalle_assurance = $car->intervalle_assurance;
-                    $oldDate = Carbon::parse($car->assurance);
-                    $currentDate = Carbon::now();
-                    $difference = ($oldDate->diffInDays($currentDate) - $intervalle_assurance)*-1;
+               $intervalle_assurance = $car->intervalle_assurance ?? 0;
+    $oldDate = $car->assurance ? Carbon::parse($car->assurance) : Carbon::now();
+    $currentDate = Carbon::now();
+    $difference = ($oldDate->diffInDays($currentDate) - $intervalle_assurance) * -1;
 
-                    $durerPlaquette = $intervalle_assurance;
-                    $contpercepl =$durerPlaquette/100;
-                    $perceassurance = $difference/$contpercepl;
+    $durerPlaquette = $intervalle_assurance;
+
+    if ($durerPlaquette > 0) {
+        $contpercepl = $durerPlaquette / 100;
+        $perceassurance = $difference / $contpercepl;
+    } else {
+        $perceassurance = 0;
+    }
                 @endphp
                 <div class="progress mx-auto">
                 <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{$perceassurance}}%;"></div>
@@ -94,14 +100,19 @@
         </div>
         <div>
             @php
-                $intervalle_visit = $car->intervalle_visit;
-                $oldDate = Carbon::parse($car->visite);
-                $currentDate = Carbon::now();
-                $difference = ($oldDate->diffInDays($currentDate) - $intervalle_visit)*-1;
+                $intervalle_visit = $car->intervalle_visit ?? 0; // sécuriser si null
+$oldDate = $car->visite ? \Carbon\Carbon::parse($car->visite) : \Carbon\Carbon::now();
+$currentDate = \Carbon\Carbon::now();
+$difference = ($oldDate->diffInDays($currentDate) - $intervalle_visit) * -1;
 
-                $durerPlaquette = $intervalle_visit;
-                $contpercepl =$durerPlaquette/100;
-                $percevisite = $difference/$contpercepl;
+$durerPlaquette = $intervalle_visit;
+
+if ($durerPlaquette > 0) {
+    $contpercepl = $durerPlaquette / 100;
+    $percevisite = $difference / $contpercepl;
+} else {
+    $percevisite = 0; // éviter la division par zéro
+}
             @endphp
             <div class="progress mx-auto">
             <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{$percevisite}}%;"></div>
