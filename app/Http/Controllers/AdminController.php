@@ -20,9 +20,9 @@ class AdminController extends Controller
     {
         return view('admin.contracts');
     }
-    public function dashboard()
+    public function dashboard1()
     {
-       return view('admin.dashboard');
+       return view('admin.dashboard1');
     }
     public function declaration()
     {

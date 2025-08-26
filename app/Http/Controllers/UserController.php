@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Voiture;
 
 
 
@@ -25,7 +26,11 @@ class UserController extends Controller
     }
     public function dashboard()
     {
-        return view('users.dashboard');
+        // Récupère toutes les voitures (ou avec une condition selon ton besoin)
+        $cars = Voiture::all();
+
+        // Envoie la variable $cars à la vue
+        return view('users.dashboard', compact('cars'));
     }
     public function declaration()
     {

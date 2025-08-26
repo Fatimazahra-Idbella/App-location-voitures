@@ -48,7 +48,7 @@ Route::group(['prefix' => 'user','as' => 'user.', 'middleware' => ['auth','IsUse
 Route::group(['prefix' => 'admin','as' => 'admin.','middleware' => ['auth','IsAdmin']],function(){
     Route::get('accounting', [AdminController::class, 'accounting'])->name('accounting');
     Route::get('contracts', [AdminController::class, 'contracts'])->name('contracts');
-    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('dashboard1', [AdminController::class, 'dashboard1'])->name('dashboard1');
     Route::get('declaration', [AdminController::class, 'declaration'])->name('declaration');
     Route::get('maintenance', [AdminController::class, 'maintenance'])->name('maintenance');
     Route::get('vehicules', [AdminController::class, 'vehicules'])->name('vehicules');
@@ -94,14 +94,14 @@ Route::get('/redirect-by-role', function () {
     $user = Auth::user();
 
     if ($user->role === 'admin' || $user->isAdmin == 1) {
-        return redirect('/admin/dashboard');
+        return redirect('/admin/dashboard1');
     }
 
     return redirect('/user/dashboard');
 });
 // Dashboard admin
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])
-    ->name('admin.dashboard')
+Route::get('/admin/dashboard1', [AdminController::class, 'dashboard1'])
+    ->name('admin.dashboard1')
     ->middleware(['auth', 'isAdmin']);
 
 
@@ -127,7 +127,7 @@ Route::delete('/user/{id}/destroy', [VoitureController::class, 'destroy'])->name
 Route::get('/user/vehicles', [VoitureController::class, 'index'])->name('users.vehicles');
 
 Route::middleware(['auth', 'IsAdmin'])->group(function () {
-    Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/dashboard1', [App\Http\Controllers\AdminController::class, 'dashboard1'])->name('admin.dashboard1');
 });
 
-Route::get('/vehicles', [VehicleController::class, 'index'])->name('admin.vehicles');
+Route::get('/vehicles', [VoitureController::class, 'index'])->name('admin.vehicles');
