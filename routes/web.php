@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\RepairController;
 use App\Http\Controllers\VoitureController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ContractController;
 
 /*
 |--------------------------------------------------------------------------
@@ -131,3 +132,8 @@ Route::middleware(['auth', 'IsAdmin'])->group(function () {
 });
 
 Route::get('/vehicles', [VoitureController::class, 'index'])->name('admin.vehicles');
+Route::middleware(['auth', 'IsAdmin'])->group(function () {
+    Route::get('/admin/contracts', [ContractController::class, 'index'])->name('admin.contracts');
+    Route::get('/admin/contracts/create', [ContractController::class, 'create'])->name('admin.contracts.create');
+    Route::post('/admin/contracts', [ContractController::class, 'store'])->name('admin.contracts.store');
+});

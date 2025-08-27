@@ -20,5 +20,9 @@ class Voiture extends Model
 ];
 
 
+public function contracts()
+{
+    return $this->hasMany(Contract::class, 'vehicle_id');
+}
 
 }
